@@ -5,7 +5,7 @@
 #include <sstream>
 
 int main(){
-std::cout << "Task A illustrates functionality of getusername and get full name \n" << std::endl;
+std::cout << "\nTask A illustrates functionality of getusername and get full name \n" << std::endl;
   Profile p1("marco", "Marco");//create an object of type profile
       std::cout << p1.getUsername() << std::endl; // marco
       std::cout << p1.getFullName() << std::endl; // Marco (@marco)
@@ -66,5 +66,45 @@ nw.addUser("mario", "Mario");
 
 //prints all users followed by who follows who
     nw.printDot();
+
+
+
+
+
+std::cout << "\nTask D prints the post history of a user and those that the user follows in reverse chronological order\n" << std::endl;
+
+Network pw;
+    pw.addUser("mario", "Mario");
+      pw.addUser("luigi", "Luigi");
+      pw.addUser("yoshi", "Yoshi");
+
+      pw.follow("mario", "luigi");
+      pw.follow("luigi", "mario");
+      pw.follow("luigi", "yoshi");
+      pw.follow("yoshi", "mario");
+
+
+      // write some posts
+      pw.writePost("mario", "It's a-me, Mario!");
+      pw.writePost("luigi", "Hey hey!");
+      pw.writePost("mario", "Hi Luigi!");
+      pw.writePost("yoshi", "Test 1");
+      pw.writePost("yoshi", "Test 2");
+      pw.writePost("luigi", "I just hope this crazy plan of yours works!");
+      pw.writePost("mario", "My crazy plans always work!");
+      pw.writePost("yoshi", "Test 3");
+      pw.writePost("yoshi", "Test 4");
+      pw.writePost("yoshi", "Test 5");
+
+      std::cout << std::endl;
+      std::cout << "======= Mario's timeline =======" << std::endl;
+      pw.printTimeline("mario");
+      std::cout << std::endl;
+
+      std::cout << "======= Yoshi's timeline =======" << std::endl;
+      pw.printTimeline("yoshi");
+      std::cout << std::endl;
+
+
   return 0;
 }

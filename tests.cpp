@@ -38,3 +38,33 @@ Network nw;
 CHECK(nw.follow("mario", "wario") == 0);
 
 }
+
+TEST_CASE("Tests the write post function"){
+  Network nw;
+  nw.addUser("mario", "M");
+  CHECK(nw.writePost("mario", "Mario") == 1);
+  CHECK(nw.writePost("Wario", "wario") == 0);
+
+}
+TEST_CASE("Tests the write post function if numPosts is maxed out"){
+  Network nw;
+  nw.addUser("mario", "M");
+  for (int i = 0; i < 99; i++){
+    nw.writePost("mario", "Mario");}
+  CHECK(nw.writePost("mario", "M") == 1);
+  CHECK(nw.writePost("mario", "MA") == 0);
+}
+
+TEST_CASE("tests printTimeline functionality"){
+  Network pw;
+  pw.addUser("mario", "Mario");
+  pw.addUser("luigi", "Luigi");
+  pw.addUser("yoshi", "Yoshi");
+
+  pw.follow("mario", "luigi");
+
+
+  pw.writePost("mario", "It's a-me, Mario!");
+  CHECK(pw.printTimeline("mario") == 1);
+  CHECK(pw.printTimeline("John Cena") == 0);
+}

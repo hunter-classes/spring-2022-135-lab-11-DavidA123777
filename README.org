@@ -10,7 +10,9 @@
 of each class on profile.cpp and network.cpp. I did not use the flag --std=c++11,
 yet it still compiled on my machine. I created tests on tests.cpp to account for
 different cases where the functions should work and when they should output false.
-The code is also commented on main.cpp, network.cpp, and profile.cpp.
+The code is also commented on main.cpp, network.cpp, and profile.cpp. I also finished
+up the extra part and used tests for that part in tests.cpp and
+also used the main lab test in main.cpp.
 
 
 
